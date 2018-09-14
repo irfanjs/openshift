@@ -17,6 +17,6 @@ node {
 
   stage('Build Image') {
     unstash name:"jar"
-    sh "oc start-build pet --from-file=target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar --follow"
+    sh "oc start-build petclinic-pipeline --from-file=target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar --follow"
   }
  } 
