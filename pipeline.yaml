@@ -8,10 +8,9 @@ items:
     name: petclinic-pipeline
   spec:
     source:
-      git:
-        ref: master
-        uri: https://github.com/irfanjs/openshift.git
       type: Git
+        ref: master
+        uri: https://github.com/irfanjs/openshift.git  
     strategy:
       type: JenkinsPipeline
       jenkinsPipelineStrategy:
