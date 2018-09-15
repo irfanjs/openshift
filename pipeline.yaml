@@ -5,8 +5,6 @@ items:
 - apiVersion: v1
   kind: BuildConfig
   metadata:
-    annotations:
-      pipeline.alpha.openshift.io/uses: '[{"name": "pet", "namespace": "COE-MERN-STACK-DEMO", "kind": "DeploymentConfig"}]'
     name: petclinic-pipeline
   spec:
     source:
