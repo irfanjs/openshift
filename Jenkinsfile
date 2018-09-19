@@ -20,7 +20,7 @@ node {
   }
   
   stage('Execute Code quality') {
-   sh "/var/lib/jenkins/apache-maven-3.5.4/bin/mvn sonar:sonar -Dsonar.host=http://sonar-server-coe-mern-project.apps.na39.openshift.opentlc.com"
+   sh "/var/lib/jenkins/apache-maven-3.5.4/bin/mvn sonar:sonar -Dsonar.host=http://sonar-server-coe-mern-project.apps.na39.openshift.opentlc.com:9000"
   }
   
     
