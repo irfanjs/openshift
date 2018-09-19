@@ -3,6 +3,10 @@ node {
     git url: "https://github.com/irfanjs/openshift.git"
   }
   
+   stage('Execute Code quality') {
+   sh "/var/lib/jenkins/apache-maven-3.5.4/bin/mvn sonar:sonar -Dsonar.host.url=http://sonar-server-coe-mern-project.apps.na39.openshift.opentlc.com"
+  }
+  
    stage('Build and Execute unit test cases') {
       git url: "https://github.com/irfanjs/openshift.git"
       sh "pwd"
@@ -19,11 +23,7 @@ node {
    jacoco() 
   }
   
-  stage('Execute Code quality') {
-   sh "/var/lib/jenkins/apache-maven-3.5.4/bin/mvn sonar:sonar -Dsonar.host.url=http://sonar-server-coe-mern-project.apps.na39.openshift.opentlc.com"
-  }
-  
-    
+     
   /* stage('Execute Unit test(s)') {
      sh " cd /var/lib/jenkins/jobs/coe-mern-project/jobs/coe-mern-project-petclinic-pipeline/workspace"
      sh "/var/lib/jenkins/apache-maven-3.5.4/bin/mvn test -Dorg.jenkinsci.plugins.durabletask.BourneShellScript.HEARTBEAT_CHECK_INTERVAL=300"
