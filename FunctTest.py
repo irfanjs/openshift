@@ -1,7 +1,6 @@
-# -*- coding: ascii -*-
-import httplib, urllib, json
+import urllib2, json
 HOST_NAME = "http://testapp-coe-mern-project.apps.na39.openshift.opentlc.com/"
-PORT = 8080
+#PORT = 8080
 test_count = 0
 table_content = ""
 
@@ -18,38 +17,38 @@ def testResult(count,description,expected_value,actual_value):
 # Test case 1 - Testing version URL
 test_count = test_count+1
 description = "/api url should return 200 status code"
-conn = httplib.HTTPConnection(HOST_NAME,PORT)
-conn.request("GET","/api")
-response = conn.getresponse()
-result_content = testResult(test_count,description,200,response.status)
+response = urllib2.urlopen(HOST_NAME)
+
+#response = conn.getresponse()
+result_content = testResult(test_count,description,200,response.getcode())
 table_content = table_content + result_content
-conn.close()
+#conn.close()
 
 # Test case 2 - Testing version URL
-test_count = test_count+1
-description = "/api url should return name & version info"
-conn = httplib.HTTPConnection(HOST_NAME,PORT)
-conn.request("GET","/api")
+# test_count = test_count+1
+# description = "/api url should return name & version info"
+# conn = urllib.urlopen(HOST_NAME)
+# conn.request("GET","/api")
 
-expected_value = ["Version","name"]
+# expected_value = ["Version","name"]
 
-response = conn.getresponse()
-response_content = response.read()
-json_response = json.loads(response_content)
+# response = conn.getresponse()
+# response_content = response.read()
+# json_response = json.loads(response_content)
 
-result_content = testResult(test_count,description,set(expected_value),set(json_response.keys()))
-table_content = table_content + result_content
-conn.close()
+# result_content = testResult(test_count,description,set(expected_value),set(json_response.keys()))
+# table_content = table_content + result_content
+# conn.close()
 
 # Test case 3 - Testing version URL
-test_count = test_count+1
-description = "/api/getEmployees url should return 200 status code"
-conn = httplib.HTTPConnection(HOST_NAME,PORT)
-conn.request("GET","/api/getEmployees")
-response = conn.getresponse()
-result_content = testResult(test_count,description,200,response.status)
-table_content = table_content + result_content
-conn.close()
+# test_count = test_count+1
+# description = "/api/getEmployees url should return 200 status code"
+# conn = urllib.urlopen(HOST_NAME)
+# conn.request("GET","/api/getEmployees")
+# response = conn.getresponse()
+# result_content = testResult(test_count,description,200,response.status)
+# table_content = table_content + result_content
+# conn.close()
 
 
 
@@ -70,7 +69,7 @@ content = '<div class="container">\
     </table>\
   </div>\
   <nav class="navbar fixed-bottom navbar-expand-lg navbar-dark bg-dark ">\
-    <a class="navbar-brand mx-auto" href="#">Copyright Â© 2018 Infosys Limited</a>\
+    <a class="navbar-brand mx-auto" href="#">Copyright 2018 Infosys Limited</a>\
   </nav>\
 </body>\
 </html>'
