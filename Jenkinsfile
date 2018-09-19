@@ -14,6 +14,10 @@ node {
   stage('publish test cases result') {
    junit '**/target/surefire-reports/TEST*.xml' 
   }
+  
+  stage('Record Jacoco coverage report') {
+   jacoco() 
+  }
     
   /* stage('Execute Unit test(s)') {
      sh " cd /var/lib/jenkins/jobs/coe-mern-project/jobs/coe-mern-project-petclinic-pipeline/workspace"
