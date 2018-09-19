@@ -1,3 +1,4 @@
+# -*- coding: ascii -*-
 import httplib, urllib, json
 HOST_NAME = "http://testapp-coe-mern-project.apps.na39.openshift.opentlc.com/"
 PORT = 8080
