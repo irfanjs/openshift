@@ -10,6 +10,10 @@ node {
   /*  stash name:"jar", includes:"/var/lib/jenkins/jobs/coe-mern-project/jobs/coe-mern-project-petclinic-pipeline/workspace/target/spring-petclinic-openshift-2.0.0.BUILD-SNAPSHOT.jar" */
       stash includes: "target/*.jar", name:"jar"
     }
+  
+  stage('publish test cases result') {
+   junit '**/target/surefire-reports/TEST*.xml' 
+  }
     
   /* stage('Execute Unit test(s)') {
      sh " cd /var/lib/jenkins/jobs/coe-mern-project/jobs/coe-mern-project-petclinic-pipeline/workspace"
