@@ -2,11 +2,6 @@ node {
   stage('Source Checkout') {
     git url: "https://github.com/irfanjs/openshift.git"
   }
-  
-   stage('Execute Code quality') {
-   sh "/var/lib/jenkins/apache-maven-3.5.4/bin/mvn sonar:sonar -Dsonar.host.url=http://sonar-server-coe-mern-project.apps.na39.openshift.opentlc.com"
-  }
-  
    stage('Build and Execute unit test cases') {
       git url: "https://github.com/irfanjs/openshift.git"
       sh "pwd"
@@ -14,6 +9,10 @@ node {
   /*  stash name:"jar", includes:"/var/lib/jenkins/jobs/coe-mern-project/jobs/coe-mern-project-petclinic-pipeline/workspace/target/spring-petclinic-openshift-2.0.0.BUILD-SNAPSHOT.jar" */
       stash includes: "target/*.jar", name:"jar"
     }
+  
+    stage('Execute Code quality') {
+   sh "/var/lib/jenkins/apache-maven-3.5.4/bin/mvn sonar:sonar -Dsonar.host.url=http://sonar-server-coe-mern-project.apps.na39.openshift.opentlc.com"
+  }
   
   stage('publish test cases result') {
    junit '**/target/surefire-reports/TEST*.xml' 
