@@ -45,7 +45,8 @@ node {
 
 stage("Performance Testing"){    
    sh '/var/lib/jenkins/apache-maven-3.5.4/bin/mvn verify'
-  publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'target/jmeter/reports/**', reportFiles: 'index.html', reportName: 'Performance Test Report', reportTitles: ''])
+  sh 'cp -R /var/lib/jenkins/jobs/coe-mern-project/jobs/coe-mern-project-petclinic-pipeline/workspace/target/jmeter/reports/** /var/lib/jenkins/jobs/coe-mern-project/jobs/coe-mern-project-petclinic-pipeline/workspace/performance-test-result'
+  publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'performance-test-result', reportFiles: 'index.html', reportName: 'Performance Test Report', reportTitles: ''])
 }
 
 
