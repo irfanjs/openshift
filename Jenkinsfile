@@ -45,7 +45,7 @@ node {
 
 stage("Performance Testing"){    
    sh '/var/lib/jenkins/apache-maven-3.5.4/bin/mvn verify'
-  publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: '**/target/jmeter/reports/**', reportFiles: 'index.html', reportName: 'Performance Test Report', reportTitles: ''])
+  publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: '**/target/jmeter/reports', reportFiles: 'index.html', reportName: 'Performance Test Report', reportTitles: ''])
 }
 
 
