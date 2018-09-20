@@ -39,12 +39,13 @@ node {
 
   }
   
-  stage("Functional Testinig"){
-        sh 'python FunctTest.py'   
+  stage("Functional Testing"){
+        sh 'python FunctTest.py'
+        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'functional-test-result', reportFiles: 'index.html', reportName: 'Functional Test report', reportTitles: ''])
    }
 
-stage("Publish Functional Test Report"){    
-      publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'functional-test-result', reportFiles: 'index.html', reportName: 'Functional Test report', reportTitles: ''])
+stage("Performance Testing"){    
+   sh '/var/lib/jenkins/apache-maven-3.5.4/bin/mvn verify'
 }
 
 
