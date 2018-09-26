@@ -1,5 +1,5 @@
 import urllib2, json
-HOST_NAME = "http://testapp-coe-mern-project.apps.na39.openshift.opentlc.com/"
+HOST_NAME = "http://testapp-jenkins.apps.na39.openshift.opentlc.com/"
 #PORT = 8080
 test_count = 0
 table_content = ""
