@@ -2,7 +2,9 @@ pipeline {
 agent any
 stages {
   stage('Source Checkout') {
+    steps {
     git url: "https://github.com/irfanjs/openshift.git"
+    } 
   }
   
    stage('Execute Code quality') {
