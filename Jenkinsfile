@@ -11,5 +11,10 @@ pipeline {
         junit(allowEmptyResults: true, testResults: '**/target/surefire-reports/TEST*.xml')
       }
     }
+    stage('publish code coverage') {
+      steps {
+        jacoco()
+      }
+    }
   }
 }
