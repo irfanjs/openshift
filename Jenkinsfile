@@ -23,7 +23,7 @@ pipeline {
     }
     stage('Upload artifact (Nexus)') {
       steps {
-        bat(script: 'mvn deploy', returnStdout: true)
+        bat(script: 'REM mvn deploy', returnStdout: true)
       }
     }
   }
