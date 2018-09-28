@@ -91,7 +91,7 @@ stages {
   }
   }
   
-  stage('Build and Deploy Services to Dev environment') {
+  stage('Build and Deploy Services to QA environment') {
     steps {
       input 'Proceed to QA environment ?'
     }
