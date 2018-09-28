@@ -91,6 +91,13 @@ stages {
   }
   }
   
+  stage('Build and Deploy Services to Dev environment') {
+    steps {
+      input 'Proceed to QA environment ?'
+    }
+  }
+  
+  
   stage("Functional Testing"){
     steps {
         sh 'python FunctTest.py'
