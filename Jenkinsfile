@@ -85,6 +85,12 @@ stages {
   
   }
   
+  stage('Execute smoke tests'){
+    steps {
+      sh 'curl -I http://testapp-jenkins.apps.na39.openshift.opentlc.com/'
+  }
+  }
+  
   stage("Functional Testing"){
     steps {
         sh 'python FunctTest.py'
