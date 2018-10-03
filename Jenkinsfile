@@ -25,7 +25,7 @@ stages {
     
   stage('publish test cases result') {
     steps {
-  /* junit '**/target/surefire-reports/TEST*.xml' */
+  
       sh "sleep 1"
     }
   }
