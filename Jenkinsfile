@@ -108,7 +108,7 @@ stages {
 stage("Performance Testing"){    
   steps {
    sh '/var/lib/jenkins/apache-maven-3.5.4/bin/mvn verify'
-  sh 'cp -R /var/lib/jenkins/jobs/openshift-pipeline/workspace/target/jmeter/reports/**/* /var/lib/jenkins/jobs/openshift-pipeline/workspace/performance-test-result'
+  sh 'cp -R /var/lib/jenkins/jobs/blueocean-pipeline/workspace/target/jmeter/reports/**/* /var/lib/jenkins/jobs/blueocean-pipeline/workspace/performance-test-result'
   publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'performance-test-result', reportFiles: 'index.html', reportName: 'Performance Test Report', reportTitles: ''])
   }   
 } 
