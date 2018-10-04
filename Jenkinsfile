@@ -7,11 +7,7 @@ stages {
     } 
   }
   
-   stage('Execute Code quality') {
-     steps {
-     sh "/var/lib/jenkins/apache-maven-3.5.4/bin/mvn sonar:sonar -Dsonar.host.url=http://sonarqube-jenkins.apps.na39.openshift.opentlc.com"
-     } 
-  }
+ 
    stage('Build and Execute unit test cases') {
      steps {
       git url: "https://github.com/irfanjs/openshift.git"
@@ -21,6 +17,12 @@ stages {
       stash includes: "target/*.jar", name:"jar"
      }
     }
+  
+    stage('Execute Code quality') {
+     steps {
+     sh "/var/lib/jenkins/apache-maven-3.5.4/bin/mvn sonar:sonar -Dsonar.host.url=http://sonarqube-jenkins.apps.na39.openshift.opentlc.com"
+     } 
+  }
     
   stage('publish test cases result') {
     steps {
