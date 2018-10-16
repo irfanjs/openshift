@@ -12,8 +12,7 @@ stages {
      steps {
      sh "sleep 1"
   /*  stash name:"jar", includes:"/var/lib/jenkins/jobs/coe-mern-project/jobs/coe-mern-project-petclinic-pipeline/workspace/target/spring-petclinic-openshift-2.0.0.BUILD-SNAPSHOT.jar" */
-      stash includes: "target/*.jar", name:"jar"
-     }
+      }
     }
   
     stage('Execute Code quality') {
