@@ -19,6 +19,12 @@ test_count = test_count+1
 description = "/api url should return 200 status code"
 response = urllib2.urlopen(HOST_NAME)
 
+#Test case 2 - Testing redirect page URL and traverse back to that page 
+test_count = test_count+2
+description = "/api/redirect should return 200 status code"
+response = urllib2.urlredirect(HOST_NAME)
+
+
 #response = conn.getresponse()
 result_content = testResult(test_count,description,200,response.getcode())
 table_content = table_content + result_content
